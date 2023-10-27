@@ -1,0 +1,107 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box; 
+}
+
+body{
+  background-color: #0C356A;
+  font-family: monospace;
+}
+
+main{
+  display:  flex;
+  flex-direction: column;
+  align-items: center;
+  width: 280px;
+
+  justify-content: space-evenly;
+
+  background-color: #0174BE;
+
+  height: 100vh;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.title{
+  font-size: 2.6em;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #fff;
+
+  text-align: center;
+}
+
+.game-board{
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  justify-items: center;
+  gap: 10px 5px;
+
+  transform-style: preserve-3d;
+  perspective: 500px;
+  user-select: none;
+}
+
+.square{
+  width: 50px;
+  height: 50px;
+  list-style: none;
+  cursor: pointer;
+  background-color: #838080;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5em;
+  position: relative;
+
+  transform: rotateY(180deg);
+  transition: 0.25s;
+}
+.square::after{
+  position: absolute;
+  content: "";
+  width: 50px;
+  height: 50px;
+  list-style: none;
+  background-color: #444;
+
+  cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.25s;
+  /* opacity: 0.8; */
+  transform: rotateY(0deg);
+  backface-visibility: hidden;
+}
+
+.square.selectedSquare{
+  transform:  rotateY(0deg);
+}
+.square.selectedSquare::after, .squareMatch::after{
+  transform:  rotateY(180deg);
+}
+
+
+.reset{
+  width: 100%;
+  background-color: #FFF0CE;
+  color: #000;
+  font-weight: 700;
+  font-size: 1.2em;
+
+  border-radius: 5px;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.reset:focus{
+  color: #FFC436;
+  background-color: #0C356A;
+}
