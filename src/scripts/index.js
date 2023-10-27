@@ -31,6 +31,7 @@ for (let i = 0; i < emojis.length; i++) {
 }
 
 function handleClick(){
+  playSound('virar-carta')
   if(openCards.length < 2 && openCards.every(item => item.dataset.n != this.dataset.n)){
     this.classList.add('selectedSquare')
     openCards.push(this)
@@ -41,7 +42,6 @@ function handleClick(){
 }
 function checkMatch(){
   if(openCards[0].innerHTML === openCards[1].innerHTML){
-    console.log(openCards)
     openCards[0].classList.add('squareMatch')    
     openCards[1].classList.add('squareMatch')    
   }
@@ -52,8 +52,16 @@ function checkMatch(){
   openCards = []
 
   if(document.querySelectorAll(".squareMatch").length === emojis.length){
+    playSound('ganhou')
     alert('Voce Venceu')
   }
+}
+
+
+function playSound(sound) {
+  let audio = new Audio(`../../src/audio/${sound}.m4a`)
+  audio.volume = 0.15
+  audio.play()
 }
 
 resetBtn.addEventListener('click', () => {
